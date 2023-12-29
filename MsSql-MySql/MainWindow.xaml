@@ -1,0 +1,40 @@
+﻿<Window x:Class="MsSql_MySql.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MsSql_MySql"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid Margin="0,0,0,0">
+        <Button Content="Leggi MYSQL" HorizontalAlignment="Left" Height="43" Margin="518,55,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.647,0.388" Click="Button_MySQL"/>
+        <Button Content="Leggi MSSQL" HorizontalAlignment="Left" Height="45" Margin="134,53,0,0" VerticalAlignment="Top" Width="140" Click="Button_MsSQL"/>
+        <ListView HorizontalAlignment="Left" Height="244" Margin="42,150,0,0" VerticalAlignment="Top" Width="325" ItemsSource="{Binding listaComuniMs}" x:Name="MsSqlList">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Provincia" Width="30" DisplayMemberBinding="{Binding sigla_provincia}" />
+                    <GridViewColumn Header="Codice Istat" Width="30" DisplayMemberBinding="{Binding codice_istat}" />
+                    <GridViewColumn Header="Denominazione" Width="30" DisplayMemberBinding="{Binding denominazione_ita}" />
+                    <GridViewColumn Header="Codice Belfiore" Width="30" DisplayMemberBinding="{Binding codice_belfiore}" />
+                    <GridViewColumn Header="Data Inizio" Width="30" DisplayMemberBinding="{Binding data_inizio_validita}" />
+                    <GridViewColumn Header="Data Fine" Width="30" DisplayMemberBinding="{Binding data_fine_validita}" />
+                    <GridViewColumn Header="Stato" Width="30" DisplayMemberBinding="{Binding stato_validita}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView HorizontalAlignment="Left" Height="244" Margin="425,150,0,0" VerticalAlignment="Top" Width="325" ItemsSource="{Binding listaComuniMy}" x:Name="MySqlList">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Provincia" Width="30" DisplayMemberBinding="{Binding sigla_provincia}" />
+                    <GridViewColumn Header="Codice Istat" Width="30" DisplayMemberBinding="{Binding codice_istat}" />
+                    <GridViewColumn Header="Denominazione" Width="30" DisplayMemberBinding="{Binding denominazione_ita}" />
+                    <GridViewColumn Header="Codice Belfiore" Width="30" DisplayMemberBinding="{Binding codice_belfiore}" />
+                    <GridViewColumn Header="Data Inizio" Width="30" DisplayMemberBinding="{Binding data_inizio_validita}" />
+                    <GridViewColumn Header="Data Fine" Width="30" DisplayMemberBinding="{Binding data_fine_validita}" />
+                    <GridViewColumn Header="Stato" Width="30" DisplayMemberBinding="{Binding stato_validita}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Name="txtMultiLine" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="0,449,0,23" HorizontalAlignment="Center" Width="728" IsReadOnlyCaretVisible="True" Text="{Binding Path=TestoTextArea, Mode=TwoWay}" />
+    </Grid>
+</Window>
