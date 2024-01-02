@@ -21,27 +21,12 @@ namespace MsSql_MySql
     /// Logica di interazione per MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        private readonly MsSqlReader _msReader;
-        private readonly MySqlReader _myReader;
-
+    {        
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
 
-            _msReader = new MsSqlReader(this);
-            _myReader = new MySqlReader(this);
-        }
-
-        private async void Button_MsSQL(object sender, RoutedEventArgs e)
-        {
-            await _msReader.ReadComuni();
-        }
-
-        private async void Button_MySQL(object sender, RoutedEventArgs e)
-        {
-            await _myReader.ReadComuni();
+            DataContext = new MainWindowViewModel(this);
         }
     }
 }

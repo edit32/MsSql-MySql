@@ -149,9 +149,11 @@
     </ApplicationDefinition>
     <Compile Include="ContextDb\MsSqlContext.cs" />
     <Compile Include="ContextDb\MySqlContext.cs" />
-    <Compile Include="Data\MsSqlReader.cs" />
-    <Compile Include="Data\MySqlReader.cs" />
+    <Compile Include="Data\MsSqlDataReader.cs" />
+    <Compile Include="Data\MySqlDataReader.cs" />
+    <Compile Include="Helper\DelegateCommand.cs" />
     <Compile Include="Models\gi_comuni_validita.cs" />
+    <Compile Include="ViewModels\BaseWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

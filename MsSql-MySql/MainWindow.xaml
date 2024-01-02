@@ -2,14 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
         xmlns:local="clr-namespace:MsSql_MySql"
         mc:Ignorable="d"
         Title="MainWindow" Height="681" Width="1288">
     <Grid Margin="0,0,0,0">
-        <Button Content="Leggi MYSQL" HorizontalAlignment="Left" Height="42" Margin="42,414,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.647,0.388" Click="Button_MySQL"/>
-        <Button Content="Leggi MSSQL" HorizontalAlignment="Left" Height="45" Margin="42,144,0,0" VerticalAlignment="Top" Width="140" Click="Button_MsSQL"/>
-        <ListView HorizontalAlignment="Left" Height="215" Margin="219,64,0,0" VerticalAlignment="Top" Width="1030" ItemsSource="{Binding listaComuniMs}" x:Name="MsSqlList">
+        <Button Content="Leggi MYSQL" HorizontalAlignment="Left" Height="42" Margin="42,414,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.647,0.388" Command="{Binding LoadMyComuniCommand}"/>
+        <Button Content="Leggi MSSQL" HorizontalAlignment="Left" Height="45" Margin="42,144,0,0" VerticalAlignment="Top" Width="140" Command="{Binding LoadMsComuniCommand}"/>
+        <ListView HorizontalAlignment="Left" Height="215" Margin="219,64,0,0" VerticalAlignment="Top" Width="1030" ItemsSource="{Binding ListaComuniMS}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Provincia" Width="80" DisplayMemberBinding="{Binding sigla_provincia}" />
@@ -22,7 +22,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView HorizontalAlignment="Left" Height="215" Margin="219,311,0,0" VerticalAlignment="Top" Width="1030" ItemsSource="{Binding listaComuniMy}" x:Name="MySqlList">
+        <ListView HorizontalAlignment="Left" Height="215" Margin="219,311,0,0" VerticalAlignment="Top" Width="1030" ItemsSource="{Binding ListaComuniMY}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Provincia" Width="80" DisplayMemberBinding="{Binding sigla_provincia}" />
@@ -35,6 +35,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="txtMultiLine" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="42,543,0,10" HorizontalAlignment="Left" Width="1236" IsReadOnlyCaretVisible="True" Text="{Binding Path=TestoTextArea, Mode=TwoWay}" />
+        <TextBox Name="txtMultiLine" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="42,543,0,10" HorizontalAlignment="Left" Width="1236" IsReadOnlyCaretVisible="True" Text="{Binding Path=TextAreaValue, Mode=TwoWay}" />
     </Grid>
 </Window>

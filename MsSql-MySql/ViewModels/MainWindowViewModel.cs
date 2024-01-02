@@ -1,6 +1,9 @@
-﻿using MsSql_MySql.Models;
+﻿using MsSql_MySql.Data;
+using MsSql_MySql.Helper;
+using MsSql_MySql.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -8,8 +11,20 @@ using System.Threading.Tasks;
 
 namespace MsSql_MySql.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
-    {   
+    public class MainWindowViewModel : BaseWindowViewModel
+    {
+        private MainWindow _mainWindow;
+        public DelegateCommand LoadMsComuniCommand { get; }
+        public DelegateCommand LoadMyComuniCommand { get; }
+
+        public MainWindowViewModel(MainWindow mainWindow)
+        {
+            _mainWindow = mainWindow;
+
+            LoadMsComuniCommand = new DelegateCommand(o => LoadMsComuni(), o => true);
+            LoadMyComuniCommand = new DelegateCommand(o => LoadMyComuni(), o => true);
+        }
+
         private string textAreaValue;
         public string TextAreaValue
         {
@@ -19,7 +34,7 @@ namespace MsSql_MySql.ViewModels
                 if (textAreaValue != value)
                 {
                     textAreaValue = value;
-                    OnPropertyChanged(nameof(TextAreaValue));
+                    NotifyPropertyChanged("TextAreaValue");
                 }
             }
         }
@@ -32,7 +47,7 @@ namespace MsSql_MySql.ViewModels
             {
                 if (_listaComuniMS == value) return;
                 _listaComuniMS = value;
-                OnPropertyChanged(nameof(ListaComuniMS));
+                NotifyPropertyChanged("ListaComuniMS");
             }
         }
 
@@ -44,15 +59,25 @@ namespace MsSql_MySql.ViewModels
             {
                 if (_listaComuniMY == value) return;
                 _listaComuniMY = value;
-                OnPropertyChanged(nameof(ListaComuniMY));
+                NotifyPropertyChanged("ListaComuniMY");
             }
-        }
+        }        
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        public async void LoadMsComuni()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            TextAreaValue = "Caricamento Comuni MSSQL";
+
+            MsSqlDataReader msdr = new MsSqlDataReader();
+
+            ListaComuniMS = await msdr.GetMsComuni();
         }
+
+        public async void LoadMyComuni()
+        {
+            TextAreaValue = "Caricamento Comuni MYSQL";
+            MySqlDataReader mydr = new MySqlDataReader();
+            ListaComuniMY = await mydr.GetMyComuni();
+        }
+       
     }
 }
