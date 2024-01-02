@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MsSql_MySql.ViewModels
 {
@@ -65,18 +66,23 @@ namespace MsSql_MySql.ViewModels
 
         public async void LoadMsComuni()
         {
-            TextAreaValue = "Caricamento Comuni MSSQL";
-
-            MsSqlDataReader msdr = new MsSqlDataReader();
-
-            ListaComuniMS = await msdr.GetMsComuni();
+            using (new WaitCursor(_mainWindow))
+            {
+                TextAreaValue = "Caricamento Comuni MSSQL";
+                MsSqlDataReader msdr = new MsSqlDataReader();
+                ListaComuniMS = await msdr.GetMsComuni();
+            }
+                
         }
 
         public async void LoadMyComuni()
         {
-            TextAreaValue = "Caricamento Comuni MYSQL";
-            MySqlDataReader mydr = new MySqlDataReader();
-            ListaComuniMY = await mydr.GetMyComuni();
+            using (new WaitCursor(_mainWindow))
+            {
+                TextAreaValue = "Caricamento Comuni MYSQL";
+                MySqlDataReader mydr = new MySqlDataReader();
+                ListaComuniMY = await mydr.GetMyComuni();
+            }
         }
        
     }

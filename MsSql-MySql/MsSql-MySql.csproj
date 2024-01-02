@@ -152,6 +152,7 @@
     <Compile Include="Data\MsSqlDataReader.cs" />
     <Compile Include="Data\MySqlDataReader.cs" />
     <Compile Include="Helper\DelegateCommand.cs" />
+    <Compile Include="Helper\WaitCursor.cs" />
     <Compile Include="Models\gi_comuni_validita.cs" />
     <Compile Include="ViewModels\BaseWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
